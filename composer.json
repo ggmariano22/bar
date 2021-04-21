@@ -1,0 +1,24 @@
+{
+    "name": "guilherme/bar",
+    "description": "bar",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Guilherme Mariano",
+            "email": "guilhermemarianosantos@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "slim/slim": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Controllers\\": "app/Controllers/",
+            "Models\\": "app/Models/",
+            "Utils\\": "utils/",
+            "DB\\":"utils/Db/"
+        }
+    }
+}
