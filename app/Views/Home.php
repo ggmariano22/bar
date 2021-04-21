@@ -4,8 +4,6 @@ require_once "Header.php";
 
 use Utils\Utils;
 
-var_dump($this->categories);
-exit;
 
 ?>
 
@@ -13,11 +11,11 @@ exit;
 
 <p>Confira os produtos disponíveis para consumo:</p>
 
-<?php foreach ($this->produtos as $key => $value): ?>
-   
-    <ul> <?php echo ucfirst($key) ?></ul>
-        <?php foreach ($value as $key => $value) : ?>
-            <li><?php echo ucfirst($key).': '. Utils::moneyFormat($value)?>
+<?php foreach ($this->categories as $key => $value): ?>
+
+    <ul> <?php echo '<strong>'.ucfirst($key).'</strong>' ?></ul>
+        <?php foreach ($value as $produtos) : ?>
+            <li><?php echo ucfirst($produtos['produto']).': '. Utils::moneyFormat($produtos['valor'])?>
         <?php endforeach; ?>
 
 <?php endforeach;
