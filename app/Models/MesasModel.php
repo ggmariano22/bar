@@ -39,7 +39,7 @@ class MesasModel{
     }
 
     public function getMesasDashboard(){
-        //$sql = 'SELECT id, ativo FROM '.$this->tabela;
+        
         $sql = 'SELECT m.id, m.ativo, ifnull(g.nome, "Sem Garçom") as garcom
         FROM mesas m
         LEFT JOIN comanda c on m.id = c.id_mesa
@@ -47,6 +47,21 @@ class MesasModel{
         ORDER BY m.id';
         return $results = $this->conn->select($sql);
 
+    }
+
+    public function getDetalheMesa($id){
+        $sql = "SELECT m.id, m.ativo, ifnull(g.nome, 'Sem Garçom') as garcom, ifnull(c.qtd_pessoas, 0) as pessoas,
+        ifnull(c.qtd_itens, 0) as itens, GROUP_CONCAT(p.descricao) as produtos
+        FROM mesas m
+        LEFT JOIN comanda c on m.id = c.id_mesa
+        LEFT JOIN garcom g on c.id_garcom = g.id
+        LEFT JOIN comanda_produto cp on c.id = cp.id_comanda
+        LEFT JOIN produtos p on cp.id_produto = p.id
+        WHERE m.id = ".$id['id']."
+        GROUP BY m.id, m.ativo, ifnull(g.nome, 'Sem Garçom'), ifnull(c.qtd_pessoas, 0),
+        ifnull(c.qtd_itens, 0)
+        ORDER BY m.id";
+        return $results = $this->conn->select($sql);
     }
 
 }

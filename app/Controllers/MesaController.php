@@ -9,6 +9,11 @@ use Models\MesasModel;
 class MesaController extends Controller{
 
     /**
+     * @var
+     */
+    protected $conn;
+
+    /**
      * @param array
      */
     protected $params = [
@@ -18,9 +23,11 @@ class MesaController extends Controller{
     ];
 
     /**
-     * @var MesasModel
+     * @param array
      */
-    protected $conn;
+    protected $detalhes = [
+        'produtos' => []
+    ];
 
 
     public function index(Request $request, Response $response){
@@ -50,9 +57,26 @@ class MesaController extends Controller{
         return $this->loadView('mesa', $response);
     }
 
+    public function detalheMesa(Request $request, Response $response, $id){
+        $conn = new MesasModel;
+        $results = $conn->getDetalheMesa($id);
+
+        foreach ($results as $result) {
+            $this->detalhes['id'] = $result['id'];
+            $this->detalhes['ativo'] = $result['ativo'];
+            $this->detalhes['garcom'] = $result['garcom'];
+            $this->detalhes['pessoas'] = $result['pessoas'];
+            $this->detalhes['produtos'] = explode(',', $result['produtos']);
+        }
+
+        return $this->loadView('detalhe', $response);
+        
+    }
+
     public function mesasHome(){
         
         $conn = new MesasModel;
+        
         return $result = $conn->getMesasDashboard();
     }
 }

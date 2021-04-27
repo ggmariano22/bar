@@ -11,5 +11,6 @@ $app = new App;
 
 $app->get('/', HomeController::class);
 $app->get('/mesas', MesaController::class . ':index');
+$app->get('/mesas/detalhe/{id}', MesaController::class . ':detalheMesa');
 
 $app->run();

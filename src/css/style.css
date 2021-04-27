@@ -43,6 +43,10 @@
     padding-top: 10%;
 }
 
+body{
+    margin-bottom: 5%;
+}
+
 #footer{
     position: fixed;
     bottom: 0px;
