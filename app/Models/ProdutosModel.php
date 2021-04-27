@@ -20,10 +20,16 @@ class ProdutosModel{
         $this->conn = new Sql;
     }
 
-    public function all(){
-        $sql = 'SELECT t.descricao as tipo, p.descricao as produto, p.valor
+    public function allProduto(){
+        $sql = 'SELECT p.id, t.descricao as tipo, p.descricao as produto, p.valor
                 FROM '.$this->tabela.' p
-                join tipo t on p.id_tipo = t.id';
+                JOIN tipo t on p.id_tipo = t.id
+                WHERE p.ativo = 1';
+        return $results = $this->conn->select($sql);
+    }
+
+    public function allTipo(){
+        $sql = 'SELECT DISTINCT descricao FROM tipo WHERE ativo = 1';
         return $results = $this->conn->select($sql);
     }
 }

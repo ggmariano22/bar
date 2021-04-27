@@ -1,0 +1,64 @@
+.container h2{
+    text-align: center;
+    padding-top: 2%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.grid-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.card {
+    display: grid;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: .5em;
+    transition: 0.3s;
+    padding: .5em .5em;
+    /*grid-template-rows: 100px 250px;*/
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.card-head {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.card-body {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.card p, .card h3{
+    padding-top: 10%;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+
+.mesas_home{
+    text-align: center;
+    display: inline-block;
+    width: 15%;
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: .5em;
+    transition: 0.3s;
+}

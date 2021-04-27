@@ -19,13 +19,13 @@ class Sql {
                                 Sql::USERNAME, Sql::PASSWORD);
 
     }
-
+    //REVISAR MÉTODO
     private function setParams($statement, array $parameters = []){
         foreach ($parameters as $key => $value) {
             $this->bindValues($statement, $key, $value);
         }
     }
-
+    //REVISAR MÉTODO
     public function bindParam($rawQuery, $params = []):array {
         $stmt = $this->conn->prepare($rawQuery);
         $this->setParams($stmt, $params);
