@@ -32,7 +32,7 @@ class MesaController extends Controller{
 
     public function index(Request $request, Response $response){
         
-        $this->conn = new MesasModel;
+        $this->conn = MesasModel::getInstance();
 
         $qtdMesas = $this->conn->getMesas(false);
         $unidade = $this->conn->getUnidades(false);

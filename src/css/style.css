@@ -1,4 +1,4 @@
-.container h2{
+.container h1, h2, h3, h4, h5, h6{
     text-align: center;
     padding-top: 2%;
 }
@@ -64,5 +64,26 @@ body{
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     margin: .5em;
+    margin-top: 5%;
     transition: 0.3s;
+}
+
+.detail {
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align:center;
+}
+
+.login{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    border: 1px solid black;
+    padding: 2%;
+}
+
+#pwd, #user{
+    margin: auto;
+    width: 50%;
 }

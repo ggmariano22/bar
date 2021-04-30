@@ -7,9 +7,14 @@ use DB\Sql;
 class MesasModel{
 
     /**
-     * @var
+     * @var Sql
      */
     protected $conn;
+
+    /**
+     * @var MesasModel
+     */
+    protected static $instance;
 
     /**
      * @var
@@ -18,6 +23,11 @@ class MesasModel{
 
     public function __construct(){
         $this->conn = new Sql;
+    }
+
+    public function getInstance(){
+        self::$instance ? self::$instance : self::$instance = new self();
+        return self::$instance;
     }
 
     public function getMesas($ativo){

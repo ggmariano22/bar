@@ -7,17 +7,24 @@ use DB\Sql;
 class ProdutosModel{
 
     /**
-     * @var
+     * @var Sql
      */
     protected $conn;
 
     /**
-     * @var
+     * @var ProdutosModel
      */
+    protected static $instance;
+
     private $tabela = 'produtos';
 
     public function __construct(){
         $this->conn = new Sql;
+    }
+
+    public function getInstance(){
+        self::$instance ? self::$instance : self::$instance = new self();
+        return self::$instance;
     }
 
     public function allProduto(){

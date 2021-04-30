@@ -20,6 +20,11 @@ class HomeController extends Controller{
 
     public function __invoke(Request $request, Response $response){
 
+        session_start();
+        if(!isset($_SESSION['usuario'])){
+            return $response->withRedirect('/public/login');
+        }
+        
         $this->categories = ProdutoController::getProdutos();
         $this->mesas = MesaController::mesasHome();
         //var_dump($this->mesas);exit;

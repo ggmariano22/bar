@@ -10,7 +10,7 @@ class ProdutoController{
 
     public function getProdutos(){
 
-        $conn = new ProdutosModel;
+        $conn = ProdutosModel::getInstance();
 
         $produtos = $conn->allProduto();
         $tipos = $conn->allTipo();
