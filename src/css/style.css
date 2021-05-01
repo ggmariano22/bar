@@ -87,3 +87,10 @@ body{
     margin: auto;
     width: 50%;
 }
+
+.mesa-cadastro, .nova-comanda{
+    margin: auto;
+    width: 70%;
+    margin-top: 5%;
+    text-align: center;
+}

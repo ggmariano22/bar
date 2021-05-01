@@ -35,4 +35,11 @@ class Sql {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function insert($rawQuery, $params = []){
+        $stmt = $this->conn->prepare($rawQuery);
+        $this->setParams($stmt, $params);
+        $stmt->execute();
+        return $this->conn->lastInsertId();
+    }
+
 }

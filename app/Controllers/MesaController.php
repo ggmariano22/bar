@@ -9,11 +9,6 @@ use Models\MesasModel;
 class MesaController extends Controller{
 
     /**
-     * @var
-     */
-    protected $conn;
-
-    /**
      * @param array
      */
     protected $params = [
@@ -32,11 +27,11 @@ class MesaController extends Controller{
 
     public function index(Request $request, Response $response){
         
-        $this->conn = MesasModel::getInstance();
+        $conn = MesasModel::getInstance();
 
-        $qtdMesas = $this->conn->getMesas(false);
-        $unidade = $this->conn->getUnidades(false);
-        $mesasAtivas = $this->conn->getMesaAtiva();
+        $qtdMesas = $conn->getMesas(false);
+        $unidade = $conn->getUnidades(false);
+        $mesasAtivas = $conn->getMesaAtiva();
 
         foreach ($qtdMesas as $key => $value) {
             $this->params['qtdMesas'] =  $value['qtd_mesas'];
@@ -75,8 +70,17 @@ class MesaController extends Controller{
 
     public function mesasHome(){
         
-        $conn = new MesasModel;
+        $conn = MesasModel::getInstance();
         
         return $result = $conn->getMesasDashboard();
+    }
+
+    public function save(Request $request, Response $response){
+        $conn = MesasModel::getInstance();
+        $params = $request->getParsedBody();
+        $results = $conn->salvaMesaBanco($params);
+        //var_dump($results);exit;
+        return $response->withRedirect('/public/mesas');
+        
     }
 }

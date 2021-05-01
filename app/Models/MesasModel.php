@@ -50,7 +50,7 @@ class MesasModel{
 
     public function getMesasDashboard(){
         
-        $sql = 'SELECT m.id, m.ativo, ifnull(g.nome, "Sem Garçom") as garcom
+        $sql = 'SELECT m.id, ifnull(c.ativo, 0) as ativo, ifnull(g.nome, "Sem Garçom") as garcom
         FROM mesas m
         LEFT JOIN comanda c on m.id = c.id_mesa
         LEFT JOIN garcom g on c.id_garcom = g.id
@@ -72,6 +72,18 @@ class MesasModel{
         ifnull(c.qtd_itens, 0)
         ORDER BY m.id";
         return $results = $this->conn->select($sql);
+    }
+
+    public function salvaMesaBanco($params = []){
+        $params_sql = [
+            'unidade' => $params['unidade']
+        ];
+        $sql = "INSERT INTO ".$this->tabela." (`id_unidade`) VALUES (:unidade)";
+        for ($i=0; $i < $params['qtd_mesa'] ; $i++) { 
+            $results = $this->conn->insert($sql, $params_sql);
+        }
+
+        return $results;
     }
 
 }

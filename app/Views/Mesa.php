@@ -8,29 +8,36 @@ use Utils\Utils;
 
 ?>
 
-
-
-<div class="container">
-    <h2>Manutenção de Mesas</h2>
+<h2>Manutenção de Mesas</h2>
 <br>
-    <article class="grid-wrap">
-        <div class="card">
-            <div class="card-body">
-            <h3>Alterar Quantidade</h3>
-            <p>Hoje você possui <strong><?php echo $this->params['qtdMesas'] ?></strong> mesas cadastradas
-                para unidade <strong><?php echo $this->params['unidade'] ?></strong></p>
-            <a class="btn btn-secondary" href="">Alterar</a>
-            </div>
+<article class="grid-wrap">
+    <div class="card">
+        <div class="card-body">
+        <h3>Alterar Quantidade</h3>
+        <p>Hoje você possui <strong><?php echo $this->params['qtdMesas'] ?></strong> mesas cadastradas
+            para unidade <strong><?php echo $this->params['unidade'] ?></strong></p>
+        <a class="btn btn-secondary" href="">Alterar</a>
         </div>
-        <div class="card">
-            <div class="card-body">
-            <h3>Consultar Mesas Ocupadas</h3>
-            <p>Existem, nesse momento, <strong><?php echo $this->params['mesasAtivas'] ?></strong> mesas ocupadas.</p>
-            <a class="btn btn-secondary" href="">Consultar</a>
-            </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+        <h3>Consultar Mesas Ocupadas</h3>
+        <p>Existem, nesse momento, <strong><?php echo $this->params['mesasAtivas'] ?></strong> mesas ocupadas.</p>
+        <a class="btn btn-secondary" href="">Consultar</a>
         </div>
-    </article>
+    </div>
+</article>
 
+<div class="mesa-cadastro">
+    <form class="form-control" action="/public/mesas" method="post">
+        <label for="qtd_mesa">Quantidade de mesas:</label>
+        <input type="text" placeholder="Ex: 14" name="qtd_mesa" id="qtd_mesa">
+        
+        <label for="unidade">Unidade:</label>
+        <input type="text" placeholder="Ex: 14" name="unidade" id="unidade">
+
+        <button class="btn btn-success" id="btn">Cadastrar</button>
+    </form>
 </div>
 
 <?php include 'Footer.php'; ?>
