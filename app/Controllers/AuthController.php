@@ -15,7 +15,13 @@ class AuthController extends Controller{
 
     public function __invoke(Request $request, Response $response){
         
-        return $this->loadView('auth', $response);
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            return $response->withRedirect('/public');
+        }else{
+            return $this->loadView('auth', $response);
+        }
+        
     }
 
     public function login(Request $request, Response $response){
