@@ -11,11 +11,6 @@ class HomeController extends Controller{
     /**
      * @param array
      */
-    protected $categories = [];
-
-    /**
-     * @param array
-     */
     protected $mesas = [];
 
     public function __invoke(Request $request, Response $response){

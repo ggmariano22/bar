@@ -14,4 +14,11 @@ class ComandaController {
         $results = $conn->salvaComandaBanco($params);
         return $response->withRedirect('/public');
     }
+
+    public function finaliza(Request $request, Response $response){
+        $conn = ComandaModel::getInstance();
+        $params = $request->getParsedBody();
+        $results = $conn->finalizaComandaBanco($params);
+        return $response->withRedirect('/public');
+    }
 }

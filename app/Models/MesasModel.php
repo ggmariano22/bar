@@ -60,7 +60,7 @@ class MesasModel{
     }
 
     public function getDetalheMesa($id){
-        $sql = "SELECT m.id, m.ativo, ifnull(g.nome, 'Sem Garçom') as garcom, ifnull(c.qtd_pessoas, 0) as pessoas,
+        $sql = "SELECT m.id, c.ativo, ifnull(g.nome, 'Sem Garçom') as garcom, ifnull(c.qtd_pessoas, 0) as pessoas,
         ifnull(c.qtd_itens, 0) as itens, GROUP_CONCAT(p.descricao) as produtos
         FROM mesas m
         LEFT JOIN comanda c on m.id = c.id_mesa
@@ -68,8 +68,8 @@ class MesasModel{
         LEFT JOIN comanda_produto cp on c.id = cp.id_comanda
         LEFT JOIN produtos p on cp.id_produto = p.id
         WHERE m.id = ".$id['id']."
-        GROUP BY m.id, m.ativo, ifnull(g.nome, 'Sem Garçom'), ifnull(c.qtd_pessoas, 0),
-        ifnull(c.qtd_itens, 0)
+        GROUP BY m.id, ifnull(g.nome, 'Sem Garçom'), ifnull(c.qtd_pessoas, 0),
+        ifnull(c.qtd_itens, 0), c.ativo
         ORDER BY m.id";
         return $results = $this->conn->select($sql);
     }
@@ -80,7 +80,7 @@ class MesasModel{
         ];
         $sql = "INSERT INTO ".$this->tabela." (`id_unidade`) VALUES (:unidade)";
         for ($i=0; $i < $params['qtd_mesa'] ; $i++) { 
-            $results = $this->conn->insert($sql, $params_sql);
+            $results = $this->conn->insertOrUpdate($sql, $params_sql);
         }
 
         return $results;

@@ -9,34 +9,37 @@ include "Header.php";
 
 <?php
 
-if($this->detalhes['pessoas'] != 0){
+if($this->detalhes['ativo'] == 1){
     ?>
-    <div class="detail">
-        <div class="mesas_home">
-            <?php
-            echo "<img src='../../../src/images/garcom.png' alt=''> ".$this->detalhes['garcom'];
-            ?>
-        </div>
+    <form action="/public/comanda/finaliza" method="post">
+        <div class="detail">
+            <div class="mesas_home">
+                <?php
+                echo "<img src='../../../src/images/garcom.png' alt=''> ".$this->detalhes['garcom'];
+                ?>
+                <input type="hidden" name="id" value="<?php echo $this->detalhes['id'] ?>">
+            </div>
 
-        <div class="mesas_home">
-            <?php
-            echo "<img src='../../../src/images/chair.png' alt=''> ".$this->detalhes['pessoas']. " Lugares";
-            ?>
-        </div>
+            <div class="mesas_home">
+                <?php
+                echo "<img src='../../../src/images/chair.png' alt=''> ".$this->detalhes['pessoas']. " Lugares";
+                ?>
+            </div>
 
-        <div class="mesas_home">
-            <?php
-            echo "<img src='../../../src/images/produtos.png' alt=''> <br>";
-            echo "<ul>";
-            echo"<br>";
-            foreach ($this->detalhes['produtos'] as $produtos) :
-                echo "<li>$produtos</li>";
-            endforeach;
-            echo "</ul>"; ?>
+            <div class="mesas_home">
+                <?php
+                echo "<img src='../../../src/images/produtos.png' alt=''> <br>";
+                echo "<ul>";
+                echo"<br>";
+                foreach ($this->detalhes['produtos'] as $produtos) :
+                    echo "<li>$produtos</li>";
+                endforeach;
+                echo "</ul>"; ?>
+            </div>
+            <br><br>
+            <button class="btn btn-danger">Finalizar Comanda</button>
         </div>
-        <br><br>
-        <a class="btn btn-danger" href="/public">Finalizar Comanda</a>
-    </div>
+    </form>
     <?php
 }else{
     ?>

@@ -88,9 +88,18 @@ body{
     width: 50%;
 }
 
-.mesa-cadastro, .nova-comanda{
+.mesa-cadastro, .nova-comanda, .novo-garcom{
     margin: auto;
     width: 70%;
     margin-top: 5%;
     text-align: center;
+}
+
+.produtos td{
+    margin: auto;
+    width: 20%;
+}
+
+.produtos h3 {
+    text-align: left;
 }

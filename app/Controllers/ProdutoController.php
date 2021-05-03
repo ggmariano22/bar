@@ -2,12 +2,24 @@
 
 namespace Controllers;
 
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 use Utils\Utils;
 use Models\ProdutosModel;
 
-class ProdutoController{
+class ProdutoController extends Controller{
 
+    /**
+     * @param array
+     */
+    protected $categories = [];
 
+    public function __invoke(Request $request, Response $response){
+        $conn = ProdutosModel::getInstance();
+        $this->categories = $this->getProdutos();
+        return $this->loadView('produtos', $response);
+    }
+    
     public function getProdutos(){
 
         $conn = ProdutosModel::getInstance();

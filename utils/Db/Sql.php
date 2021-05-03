@@ -19,7 +19,7 @@ class Sql {
                                 Sql::USERNAME, Sql::PASSWORD);
 
     }
-    //REVISAR MÉTODO
+    
     private function setParams($statement, array $parameters = []){
         
         foreach ($parameters as $key => $value) {
@@ -35,7 +35,7 @@ class Sql {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function insert($rawQuery, $params = []){
+    public function insertOrUpdate($rawQuery, $params = []){
         $stmt = $this->conn->prepare($rawQuery);
         $this->setParams($stmt, $params);
         $stmt->execute();

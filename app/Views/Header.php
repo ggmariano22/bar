@@ -33,16 +33,16 @@ if($_SERVER['REQUEST_URI'] == '/public/login'){
             <?php if($_SERVER['REQUEST_URI'] == '/public') {
                 ?>
                 <a class="btn btn-secondary" href="/public/mesas">Mesas</a>
-                <a class="btn btn-secondary" href="">Garçom</a>
-                <a class="btn btn-secondary" href="">Produtos</a>
+                <a class="btn btn-secondary" href="/public/garcom">Garçom</a>
+                <a class="btn btn-secondary" href="/public/produtos">Produtos</a>
                 <a class="btn btn-danger" href="/public/logout">Logout</a>
                 <?php
             }else {
                 ?>
                 <a class="btn btn-secondary" href="/public">Home</a>
                 <a class="btn btn-secondary" href="/public/mesas">Mesas</a>
-                <a class="btn btn-secondary" href="">Garçom</a>
-                <a class="btn btn-secondary" href="">Produtos</a>
+                <a class="btn btn-secondary" href="/public/garcom">Garçom</a>
+                <a class="btn btn-secondary" href="/public/produtos">Produtos</a>
                 <a class="btn btn-danger" href="/public/logout">Logout</a>
                 <?php
             } ?>
