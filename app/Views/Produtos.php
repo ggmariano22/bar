@@ -16,12 +16,15 @@ use Utils\Utils;
                 <th scope="col">Cód.</th>    
                 <th scope="col">Descricao</th>
                 <th scope="col">Valor</th>
+                <th scope="col">Ações</th>
             </tr>
             <?php foreach ($value as $produtos) : ?>
                 <tr>
                     <td><?php echo $produtos['id'] ?></td>
                     <td><?php echo $produtos['produto'] ?></td>
                     <td><?php echo Utils::moneyFormat($produtos['valor']) ?></td>
+                    <td><a class="btn btn-primary" href="/public/produtos/editar">Editar</a>
+                        <a class="btn btn-danger" href="/public/produtos/apagar">Apagar</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
