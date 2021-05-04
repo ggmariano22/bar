@@ -4,12 +4,16 @@ $this->tituloPagina = "Detalhe";
 
 include "Header.php";
 
+use Utils\Utils;
+
+Utils::usuarioLogado();
+
 ?>
 <h2>Detalhes da Mesa <?php echo $this->detalhes['id']?></h2>
 
 <?php
 
-if($this->detalhes['ativo'] == 1){
+if($this->detalhes['ativo'] == '1'){
     ?>
     <form action="/public/comanda/finaliza" method="post">
         <div class="detail">
@@ -50,7 +54,15 @@ if($this->detalhes['ativo'] == 1){
             <input name="mesa" class="form-control" id="mesa" readonly type="text" value="<?php echo $this->detalhes['id']?>">
             
             <label for="garcom">Garçom: </label>
-            <input name="garcom" class="form-control" id="garcom" type="text" placeholder="Ex: Guilherme">
+            <select class="form-select" name="garcom">
+            <?php
+                foreach (Utils::getSelectParams('garcom') as $garcom) {
+                    ?>
+                        <option value="<?php echo $garcom['id'] ?>"><?php echo $garcom['nome'] ?></option>
+                    <?php
+                }
+            ?>
+        </select>
 
             <label for="ocupantes">Ocupantes: </label>
             <input name="ocupantes" class="form-control" id="ocupantes" type="text" placeholder="Ex: 4">
@@ -63,7 +75,5 @@ if($this->detalhes['ativo'] == 1){
     <?php
     
 }
-
-
 
 include "Footer.php";

@@ -6,6 +6,8 @@ include "Header.php";
 
 use Utils\Utils;
 
+Utils::usuarioLogado();
+
 ?>
 
 <h2>Manutenção de Mesas</h2>
@@ -33,8 +35,19 @@ use Utils\Utils;
         <label for="qtd_mesa">Quantidade de mesas:</label>
         <input type="text" placeholder="Ex: 14" name="qtd_mesa" id="qtd_mesa">
         
-        <label for="unidade">Unidade:</label>
-        <input type="text" placeholder="Ex: 14" name="unidade" id="unidade">
+        <br><br>
+
+        <select class="form-select" name="unidade">
+            <?php
+                foreach (Utils::getSelectParams('unidade') as $unidade) {
+                    ?>
+                        <option name="id_unidade" value="<?php echo $unidade['id'] ?>"><?php echo $unidade['descricao'] ?></option>
+                    <?php
+                }
+            ?>
+        </select>
+
+        <br>
 
         <button class="btn btn-success" id="btn">Cadastrar</button>
     </form>

@@ -39,4 +39,17 @@ class ProdutosModel{
         $sql = 'SELECT DISTINCT descricao FROM tipo WHERE ativo = 1';
         return $results = $this->conn->select($sql);
     }
+
+    public function cadastraProdBanco($params = []){
+        $sql = "INSERT INTO ".$this->tabela." (`descricao`, `id_tipo`, `valor`)
+                VALUES (:descricao, :id_tipo, :valor)";
+        $results = $this->conn->insertOrUpdate($sql, $params);
+        return $results;
+    }
+
+    public function inativaProduto($params = []){
+        $sql = "UPDATE ".$this->tabela." SET ativo = 0 WHERE id = :id";
+        $results = $this->conn->insertOrUpdate($sql, $params);
+        return $results;
+    }
 }

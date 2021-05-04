@@ -39,7 +39,7 @@ class ComandaModel {
 
     public function finalizaComandaBanco($params = []){
         //var_dump($params);exit;
-        $sql = "UPDATE ".$this->tabela." SET ativo = 0 WHERE id_mesa = :id";
+        $sql = "UPDATE ".$this->tabela." SET ativo = 0, dt_fechamento = sysdate() WHERE id_mesa = :id";
         $results = $this->conn->insertOrUpdate($sql, $params);
     }
 

@@ -6,6 +6,8 @@ include "Header.php";
 
 use Utils\Utils;
 
+Utils::usuarioLogado();
+
 ?>
 
 <h2>Cadastro e Manutenção de Garçons</h2>
@@ -14,9 +16,20 @@ use Utils\Utils;
     <form class="form-control" action="/public/garcom" method="post">
         <label for="nome">Nome do Garçom: </label>
         <input type="text" name="nome" id="nome">
+        
+        <br><br>
 
-        <label for="unidade">Unidade: </label>
-        <input type="text" name="id_unidade" id="unidade">
+        <select class="form-select" name="id_unidade">
+            <?php
+                foreach (Utils::getSelectParams('unidade') as $unidade) {
+                    ?>
+                        <option name="id_unidade" value="<?php echo $unidade['id'] ?>"><?php echo $unidade['descricao'] ?></option>
+                    <?php
+                }
+            ?>
+        </select>
+
+        <br>
 
         <button class="btn btn-success" id="btn">Cadastrar</button>
     </form>

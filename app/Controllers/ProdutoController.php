@@ -42,4 +42,17 @@ class ProdutoController extends Controller{
         return $categories;
     }
 
+    public function cadastro(Request $request, Response $response){
+        $conn = ProdutosModel::getInstance();
+        $params = $request->getParsedBody();
+        $results = $conn->cadastraProdBanco($params);
+        return $response->withRedirect('/public/produtos');
+    }
+
+    public function inativa(Request $request, Response $response, $id){
+        $conn = ProdutosModel::getInstance();
+        $results = $conn->inativaProduto($id);
+        return $response->withRedirect('/public/produtos');
+    }
+
 }

@@ -25,5 +25,7 @@ $app->get('/garcom', GarcomController::class);
 $app->post('/garcom', GarcomController::class . ':cadastra');
 
 $app->get('/produtos', ProdutoController::class);
+$app->post('/produtos', ProdutoController::class . ':cadastro');
+$app->get('/produtos/apagar/{id}', ProdutoController::class . ':inativa');
 
 $app->run();

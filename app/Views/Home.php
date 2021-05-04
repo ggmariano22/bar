@@ -6,9 +6,6 @@ include "Header.php";
 
 use Utils\Utils;
 
-//var_dump($this->mesas);exit;
-
-
 ?>
 
 <h2>Bem-vindo ao Bar do Mariano</h2>

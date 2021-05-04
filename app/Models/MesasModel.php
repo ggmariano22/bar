@@ -52,7 +52,7 @@ class MesasModel{
         
         $sql = 'SELECT m.id, ifnull(c.ativo, 0) as ativo, ifnull(g.nome, "Sem Garçom") as garcom
         FROM mesas m
-        LEFT JOIN comanda c on m.id = c.id_mesa
+        LEFT JOIN comanda c on m.id = c.id_mesa and c.ativo = 1
         LEFT JOIN garcom g on c.id_garcom = g.id
         ORDER BY m.id';
         return $results = $this->conn->select($sql);
@@ -63,7 +63,7 @@ class MesasModel{
         $sql = "SELECT m.id, c.ativo, ifnull(g.nome, 'Sem Garçom') as garcom, ifnull(c.qtd_pessoas, 0) as pessoas,
         ifnull(c.qtd_itens, 0) as itens, GROUP_CONCAT(p.descricao) as produtos
         FROM mesas m
-        LEFT JOIN comanda c on m.id = c.id_mesa
+        LEFT JOIN comanda c on m.id = c.id_mesa and c.id in (select max(z.id) from comanda z where m.id = z.id_mesa)
         LEFT JOIN garcom g on c.id_garcom = g.id
         LEFT JOIN comanda_produto cp on c.id = cp.id_comanda
         LEFT JOIN produtos p on cp.id_produto = p.id
