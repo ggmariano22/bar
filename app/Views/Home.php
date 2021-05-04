@@ -9,6 +9,7 @@ use Utils\Utils;
 ?>
 
 <h2>Bem-vindo ao Bar do Mariano</h2>
+<h3>Sistema de Gerenciamento de Comandas</h3>
 
 <?php foreach ($this->mesas as $mesa) :
     

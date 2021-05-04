@@ -21,4 +21,8 @@ class ComandaController {
         $results = $conn->finalizaComandaBanco($params);
         return $response->withRedirect('/public');
     }
+
+    public function addProduto(){
+        
+    }
 }

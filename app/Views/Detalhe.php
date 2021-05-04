@@ -38,8 +38,19 @@ if($this->detalhes['ativo'] == '1'){
                 foreach ($this->detalhes['produtos'] as $produtos) :
                     echo "<li>$produtos</li>";
                 endforeach;
-                echo "</ul>"; ?>
+                echo "</ul>";
+                ?>                
             </div>
+            <?php
+                echo "<br><br>";
+                echo "<select class='form-select' name='' >";
+                foreach (Utils::getSelectParams('produto') as $produtos) {
+                    echo "<option value='".$produtos['id']."'>".$produtos['descricao']." - ".Utils::moneyFormat($produtos['valor'])."</option>";
+                }
+                echo "</select>";
+                echo "<br>";
+                echo "<a class='btn btn-success' href='/public/comanda/add-produto/".$this->detalhes['id']."'>+ Item</a></td>";
+            ?>
             <br><br>
             <button class="btn btn-danger">Finalizar Comanda</button>
         </div>

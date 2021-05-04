@@ -20,6 +20,7 @@ $app->get('/logout', AuthController::class . ':logout');
 
 $app->post('/comanda/cadastro', ComandaController::class . ':cadastro');
 $app->post('/comanda/finaliza', ComandaController::class . ':finaliza');
+$app->post('comanda/add-produto/', ComandaController::class . ':addProduto');
 
 $app->get('/garcom', GarcomController::class);
 $app->post('/garcom', GarcomController::class . ':cadastra');

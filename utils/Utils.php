@@ -31,6 +31,12 @@ class Utils{
                 $conn = new Sql;
                 return $results = $conn->select($sql);
                 break;
+
+            case 'produto':
+                $sql = "SELECT id, descricao, valor FROM produtos WHERE ativo = 1";
+                $conn = new Sql;
+                return $results = $conn->select($sql);
+                break;
             
             default:
                 break;
